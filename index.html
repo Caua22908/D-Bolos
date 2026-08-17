@@ -1,0 +1,1705 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confeitaria D'Bolos & Débora Massoterapeuta</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            /* Cores Padrão - Confeitaria */
+            --pink-light: #FFF0F5;
+            --pink-soft: #FDE8EF;
+            --pink-main: #E86A92;
+            --pink-dark: #C44569;
+            --gold-light: #FDF4E3;
+            --gold-main: #D4AF37;
+            --gold-dark: #B38F24;
+            --gold-gradient: linear-gradient(135deg, #BF953F 0%, #FCF6BA 25%, #B38F20 50%, #FBF5B7 75%, #AA771C 100%);
+            --pink-gradient: linear-gradient(135deg, #FF9A9E 0%, #FECFEF 99%, #FECFEF 100%);
+            --bg-body: #FAF8F6;
+            --text-dark: #2D3436;
+            --text-muted: #636E72;
+            --white: #FFFFFF;
+            --shadow-soft: 0 10px 30px rgba(232, 106, 146, 0.12);
+            --shadow-gold: 0 10px 25px rgba(212, 175, 55, 0.2);
+            --radius-lg: 24px;
+            --radius-md: 16px;
+            --transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+
+            /* Cores Específicas - Massoterapia (Branco, Bege Escuro e Dourado) */
+            --massagem-bege-bg: #1C1714;
+            --massagem-bege-escuro: #6E5544;
+            --massagem-bege-mid: #3A2F28;
+            --massagem-bege-card: #2B221C;
+            --massagem-bege-light: #F5EBE1;
+            --massagem-dourado: #D4AF37;
+            --massagem-dourado-bright: #FFD700;
+            --massagem-dourado-dark: #AA771C;
+            --massagem-white: #FFFFFF;
+            --massagem-gold-gradient: linear-gradient(135deg, #BF953F 0%, #FCF6BA 30%, #B38F20 70%, #AA771C 100%);
+            --massagem-bg-gradient: linear-gradient(135deg, #1C1714 0%, #2D231E 50%, #15110F 100%);
+            --massagem-card-gradient: linear-gradient(145deg, #2A221D 0%, #1F1814 100%);
+            --massagem-gold-glow: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-dark);
+            overflow-x: hidden;
+            line-height: 1.6;
+            transition: background-color 0.6s ease;
+        }
+
+        body.theme-massagem {
+            background-color: var(--massagem-bege-bg);
+            color: var(--massagem-white);
+        }
+
+        /* Ambient Background Floating Elements */
+        .bg-decor {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .bg-circle {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.35;
+            animation: floatSlow 18s infinite alternate ease-in-out;
+            transition: background 0.8s ease;
+        }
+
+        .circle-1 {
+            width: 400px;
+            height: 400px;
+            background: #FDE8EF;
+            top: -100px;
+            right: -50px;
+        }
+
+        .circle-2 {
+            width: 500px;
+            height: 500px;
+            background: #FFF3D6;
+            bottom: 10%;
+            left: -150px;
+            animation-delay: -5s;
+        }
+
+        body.theme-massagem .circle-1 {
+            background: #6E5544;
+            opacity: 0.25;
+        }
+
+        body.theme-massagem .circle-2 {
+            background: #B38F20;
+            opacity: 0.2;
+        }
+
+        @keyframes floatSlow {
+            0% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(40px, 60px) scale(1.1); }
+            100% { transform: translate(-30px, 30px) scale(0.95); }
+        }
+
+        /* HEADER & TOP NAV */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+            transition: var(--transition);
+        }
+
+        body.theme-massagem header {
+            background: rgba(28, 23, 20, 0.95);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+            box-shadow: 0 4px 25px rgba(0,0,0,0.5);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 12px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .brand-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .logo-badge {
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            background: var(--gold-gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 1.2rem;
+            box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
+            border: 2px solid var(--white);
+            transition: var(--transition);
+        }
+
+        .brand-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--pink-dark);
+            letter-spacing: -0.5px;
+            transition: color 0.5s ease;
+        }
+
+        body.theme-massagem .brand-title {
+            color: var(--massagem-white);
+        }
+
+        .brand-title span {
+            color: var(--gold-main);
+            font-family: 'Great Vibes', cursive;
+            font-size: 1.8rem;
+            margin-left: 4px;
+            transition: color 0.5s ease;
+        }
+
+        /* NICHE TAB SWITCHER */
+        .tab-switcher {
+            display: flex;
+            background: rgba(253, 232, 239, 0.7);
+            padding: 5px;
+            border-radius: 50px;
+            border: 1px solid rgba(232, 106, 146, 0.2);
+            transition: var(--transition);
+        }
+
+        body.theme-massagem .tab-switcher {
+            background: rgba(58, 47, 40, 0.8);
+            border-color: rgba(212, 175, 55, 0.4);
+        }
+
+        .tab-btn {
+            border: none;
+            background: transparent;
+            padding: 10px 22px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.88rem;
+            color: var(--text-dark);
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        body.theme-massagem .tab-btn {
+            color: #D9C5B2;
+        }
+
+        .tab-btn.active {
+            background: var(--white);
+            color: var(--pink-dark);
+            box-shadow: 0 4px 15px rgba(232, 106, 146, 0.2);
+        }
+
+        .tab-btn.active.massagem-tab {
+            color: #1C1714;
+            box-shadow: 0 4px 20px rgba(255, 215, 0, 0.4);
+            background: var(--massagem-gold-gradient);
+            font-weight: 800;
+        }
+
+        /* HERO SECTION - BOLOS */
+        .hero {
+            position: relative;
+            z-index: 1;
+            padding: 70px 24px 60px;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .hero-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 18px;
+            background: var(--white);
+            border: 1px solid var(--gold-main);
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--gold-dark);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .hero-tag i {
+            color: var(--gold-main);
+            animation: spin 6s infinite linear;
+        }
+
+        @keyframes spin {
+            100% { transform: rotate(360deg); }
+        }
+
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.4rem;
+            line-height: 1.15;
+            color: var(--text-dark);
+            margin-bottom: 20px;
+        }
+
+        .hero-title .highlight-pink {
+            color: var(--pink-dark);
+            position: relative;
+            display: inline-block;
+        }
+
+        .hero-title .highlight-gold {
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-family: 'Great Vibes', cursive;
+            font-size: 4.2rem;
+            font-weight: 400;
+            display: block;
+            margin-top: -10px;
+        }
+
+        .hero-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 35px;
+            max-width: 520px;
+            font-weight: 400;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--pink-main), var(--pink-dark));
+            color: var(--white);
+            padding: 16px 32px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.95rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: var(--shadow-soft);
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 15px 35px rgba(232, 106, 146, 0.35);
+        }
+
+        .btn-gold {
+            background: var(--gold-gradient);
+            color: #4A3B00;
+            padding: 16px 32px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.95rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: var(--shadow-gold);
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-gold:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 15px 35px rgba(212, 175, 55, 0.4);
+        }
+
+        .btn-outline {
+            background: var(--white);
+            color: var(--pink-dark);
+            border: 2px solid var(--pink-soft);
+            padding: 14px 28px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: var(--transition);
+        }
+
+        /* HERO VISUAL */
+        .hero-visual {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-card-main {
+            position: relative;
+            width: 100%;
+            max-width: 420px;
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 24px;
+            box-shadow: var(--shadow-soft);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            transform: rotate(-1.5deg);
+            transition: var(--transition);
+        }
+
+        .hero-card-main:hover {
+            transform: rotate(0deg) scale(1.02);
+        }
+
+        .hero-img-wrapper {
+            width: 100%;
+            height: 320px;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            position: relative;
+            background: var(--pink-soft);
+        }
+
+        .hero-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .floating-badge {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 12px 20px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+            border: 1px solid var(--gold-light);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            animation: float 4s infinite ease-in-out;
+            z-index: 10;
+        }
+
+        .badge-top { top: -20px; right: -20px; }
+        .badge-bottom { bottom: 20px; left: -30px; animation-delay: -2s; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .badge-icon {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: var(--pink-soft);
+            color: var(--pink-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+        }
+
+        .badge-icon.gold { background: #FFF3D6; color: var(--gold-dark); }
+
+        .badge-text strong { display: block; font-size: 0.85rem; color: var(--text-dark); }
+        .badge-text span { font-size: 0.75rem; color: var(--text-muted); }
+
+        /* FEATURES SECTION */
+        .features { padding: 60px 24px; max-width: 1200px; margin: 0 auto; }
+
+        .section-header { text-align: center; max-width: 600px; margin: 0 auto 50px; }
+
+        .section-subtitle {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2.2rem;
+            color: var(--gold-dark);
+            display: block;
+            margin-bottom: -5px;
+        }
+
+        body.theme-massagem .section-subtitle { color: var(--massagem-dourado-bright); }
+
+        .section-title { font-family: 'Playfair Display', serif; font-size: 2.3rem; color: var(--text-dark); }
+
+        body.theme-massagem .section-title { color: var(--massagem-white); }
+
+        .section-desc { color: var(--text-muted); font-size: 0.95rem; margin-top: 10px; }
+
+        body.theme-massagem .section-desc { color: #D9C5B2; }
+
+        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px; }
+
+        .feature-card {
+            background: var(--white);
+            padding: 30px 24px;
+            border-radius: var(--radius-md);
+            border: 1px solid rgba(232, 106, 146, 0.1);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+            text-align: center;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-soft); }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--pink-soft);
+            color: var(--pink-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin: 0 auto 20px;
+            transition: var(--transition);
+        }
+
+        .feature-title { font-size: 1.1rem; font-weight: 700; margin-bottom: 8px; color: var(--text-dark); }
+        .feature-text { font-size: 0.85rem; color: var(--text-muted); }
+
+        /* PRICING & OPTIONS SECTION */
+        .pricing-section {
+            background: linear-gradient(180deg, var(--white) 0%, var(--pink-light) 100%);
+            padding: 70px 24px;
+            border-top: 1px solid var(--pink-soft);
+            border-bottom: 1px solid var(--pink-soft);
+        }
+
+        .pricing-container { max-width: 1100px; margin: 0 auto; }
+        .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 40px; }
+
+        .price-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 36px 28px;
+            border: 2px solid var(--pink-soft);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.03);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: var(--transition);
+        }
+
+        .price-card.featured { border-color: var(--gold-main); box-shadow: var(--shadow-gold); transform: scale(1.03); }
+
+        .badge-featured {
+            position: absolute;
+            top: -15px;
+            right: 25px;
+            background: var(--gold-gradient);
+            color: #3D2F00;
+            font-size: 0.75rem;
+            font-weight: 800;
+            padding: 6px 16px;
+            border-radius: 50px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 10px rgba(212, 175, 55, 0.3);
+        }
+
+        .price-header h3 { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--text-dark); margin-bottom: 6px; }
+        .price-header p { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 20px; }
+        .price-tag { font-size: 2.5rem; font-weight: 800; color: var(--pink-dark); margin-bottom: 24px; display: flex; align-items: baseline; gap: 6px; }
+        .price-tag .currency { font-size: 1.2rem; font-weight: 600; }
+        .price-tag .unit { font-size: 0.9rem; color: var(--text-muted); font-weight: 400; }
+        .price-features { list-style: none; margin-bottom: 30px; }
+        .price-features li { font-size: 0.9rem; color: var(--text-dark); padding: 10px 0; border-bottom: 1px dashed #F1F2F6; display: flex; align-items: center; gap: 10px; }
+        .price-features li i { color: #2ECC71; font-size: 0.9rem; }
+
+        /* BUILDER SECTION */
+        .builder-section { padding: 80px 24px; max-width: 1200px; margin: 0 auto; }
+        .builder-card { background: var(--white); border-radius: var(--radius-lg); padding: 40px; box-shadow: var(--shadow-soft); border: 1px solid rgba(232, 106, 146, 0.15); }
+        .step-title { font-size: 1.1rem; font-weight: 700; color: var(--pink-dark); margin-bottom: 18px; display: flex; align-items: center; gap: 12px; }
+        .step-number { width: 32px; height: 32px; border-radius: 50%; background: var(--pink-main); color: var(--white); display: flex; align-items: center; justify-content: center; font-size: 0.9rem; }
+        .options-massa { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 40px; }
+        .massa-btn { background: var(--bg-body); border: 2px solid #EAEAEA; padding: 18px; border-radius: var(--radius-md); cursor: pointer; text-align: center; font-weight: 700; font-size: 1rem; color: var(--text-dark); transition: var(--transition); display: flex; align-items: center; justify-content: center; gap: 10px; }
+        .massa-btn.selected { border-color: var(--pink-main); background: var(--pink-soft); color: var(--pink-dark); box-shadow: 0 4px 12px rgba(232, 106, 146, 0.15); }
+
+        .recheio-filters { display: flex; gap: 10px; margin-bottom: 24px; flex-wrap: wrap; }
+        .filter-chip { padding: 8px 18px; border-radius: 50px; background: var(--bg-body); border: 1px solid #E0E0E0; font-size: 0.82rem; font-weight: 600; color: var(--text-muted); cursor: pointer; transition: var(--transition); }
+        .filter-chip.active { background: var(--pink-dark); color: var(--white); border-color: var(--pink-dark); }
+
+        .recheios-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; max-height: 480px; overflow-y: auto; padding-right: 8px; margin-bottom: 35px; }
+        .recheios-grid::-webkit-scrollbar { width: 6px; }
+        .recheios-grid::-webkit-scrollbar-thumb { background: var(--pink-main); border-radius: 10px; }
+        .recheio-card { background: var(--white); border: 1px solid #EAEAEA; border-radius: var(--radius-md); padding: 16px; cursor: pointer; transition: var(--transition); position: relative; }
+        .recheio-card:hover { border-color: var(--pink-main); transform: translateY(-2px); }
+        .recheio-card.selected { border-color: var(--pink-main); background: var(--pink-soft); box-shadow: 0 4px 12px rgba(232, 106, 146, 0.15); }
+        .recheio-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
+        .recheio-title { font-size: 0.95rem; font-weight: 700; color: var(--text-dark); }
+        .recheio-desc { font-size: 0.78rem; color: var(--text-muted); line-height: 1.4; }
+        .check-icon { color: var(--pink-dark); opacity: 0; transition: var(--transition); }
+        .recheio-card.selected .check-icon { opacity: 1; }
+
+        .order-summary { background: linear-gradient(135deg, #FFF9FA 0%, #FFF0F5 100%); border: 2px solid var(--pink-soft); border-radius: var(--radius-md); padding: 24px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 20px; }
+        .summary-info h4 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin-bottom: 6px; }
+        .summary-details { font-size: 1.05rem; font-weight: 700; color: var(--pink-dark); }
+        .summary-details span { color: var(--text-dark); font-weight: 500; }
+
+        /* GALLERY SECTION */
+        .gallery-section { padding: 60px 24px; max-width: 1200px; margin: 0 auto; }
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-top: 35px; }
+        .gallery-item { position: relative; border-radius: var(--radius-md); overflow: hidden; height: 250px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+        .gallery-overlay { position: absolute; inset: 0; background: rgba(196, 69, 105, 0.75); display: flex; flex-direction: column; align-items: center; justify-content: center; color: var(--white); opacity: 0; transition: var(--transition); text-align: center; padding: 20px; }
+        .gallery-item:hover img { transform: scale(1.1); }
+        .gallery-item:hover .gallery-overlay { opacity: 1; }
+        .gallery-overlay i { font-size: 2rem; margin-bottom: 10px; color: var(--gold-light); }
+        .gallery-overlay p { font-size: 0.85rem; font-weight: 600; }
+
+        .quote-box { background: var(--white); border-left: 5px solid var(--gold-main); padding: 30px; border-radius: var(--radius-md); margin: 50px auto 0; max-width: 800px; box-shadow: var(--shadow-soft); text-align: center; position: relative; }
+        .quote-box i.quote-icon { font-size: 2rem; color: var(--gold-main); opacity: 0.3; margin-bottom: 10px; }
+        .quote-text { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.15rem; color: var(--text-dark); line-height: 1.7; }
+
+        /* ===================================================
+           ESTILOS MASSOTERAPIA - BRANCO, BEGE ESCURO E DOURADO
+        =================================================== */
+        #niche-massagem {
+            display: none;
+            padding: 30px 24px 80px;
+            max-width: 1200px;
+            margin: 0 auto;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        #niche-massagem.active-section {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* BANNER PROMOÇÃO EM DEGRADÊ DOURADO & BEGE */
+        .massagem-promo-banner {
+            background: var(--massagem-card-gradient);
+            border-radius: var(--radius-lg);
+            padding: 50px 30px;
+            border: 2px solid var(--massagem-dourado);
+            box-shadow: 0 0 35px rgba(212, 175, 55, 0.25);
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .massagem-promo-banner::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,215,0,0.08) 0%, transparent 60%);
+            animation: pulseBg 6s infinite ease-in-out;
+            pointer-events: none;
+        }
+
+        @keyframes pulseBg {
+            0%, 100% { opacity: 0.5; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.1); }
+        }
+
+        /* ANIMAÇÃO DE FOGO / PROMOÇÃO */
+        .promo-fire-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 24px;
+            background: linear-gradient(135deg, #FF4500 0%, #FF8C00 100%);
+            color: #FFFFFF;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 24px;
+            box-shadow: 0 4px 20px rgba(255, 69, 0, 0.4);
+            animation: pulseGlow 2s infinite ease-in-out;
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% { transform: scale(1); box-shadow: 0 0 15px rgba(255, 69, 0, 0.5); }
+            50% { transform: scale(1.05); box-shadow: 0 0 30px rgba(255, 215, 0, 0.8); }
+        }
+
+        .massagem-title-hero {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            color: var(--massagem-white);
+            margin-bottom: 16px;
+            line-height: 1.2;
+        }
+
+        .massagem-title-hero span {
+            background: var(--massagem-gold-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: 2.8rem;
+            display: block;
+            margin-top: 5px;
+        }
+
+        .massagem-subtitle-hero {
+            font-size: 1.2rem;
+            color: #D9C5B2;
+            margin-bottom: 30px;
+            font-weight: 500;
+            max-width: 780px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* PAIN POINTS & PERSONALIZED CARD */
+        .pain-points-card {
+            background: rgba(110, 85, 68, 0.25);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: var(--radius-md);
+            padding: 30px;
+            max-width: 850px;
+            margin: 0 auto 35px;
+            backdrop-filter: blur(5px);
+            text-align: center;
+        }
+
+        .pain-question {
+            font-size: 1.15rem;
+            color: #FFD700;
+            font-weight: 700;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .pain-text {
+            color: #F5EBE1;
+            font-size: 1.02rem;
+            line-height: 1.7;
+            margin-bottom: 18px;
+        }
+
+        .session-info {
+            background: rgba(255, 255, 255, 0.95);
+            color: #1C1714;
+            padding: 16px 24px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+
+        .session-info i {
+            color: var(--massagem-dourado-dark);
+            font-size: 1.3rem;
+        }
+
+        /* BENEFÍCIOS & RECURSOS GRID */
+        .benefits-resources-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .benefits-box, .resources-box {
+            background: var(--massagem-bege-card);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: var(--radius-lg);
+            padding: 35px 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .benefits-box:hover, .resources-box:hover {
+            border-color: var(--massagem-dourado-bright);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(212, 175, 55, 0.2);
+        }
+
+        .box-header-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            color: var(--massagem-white);
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-bottom: 2px solid var(--massagem-bege-escuro);
+            padding-bottom: 12px;
+        }
+
+        .box-header-title i {
+            color: var(--massagem-dourado-bright);
+        }
+
+        /* LISTA DE BENEFÍCIOS */
+        .benefits-list-custom {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 16px;
+        }
+
+        .benefits-list-custom li {
+            background: rgba(110, 85, 68, 0.2);
+            padding: 14px 18px;
+            border-radius: 12px;
+            border-left: 4px solid var(--massagem-dourado);
+            color: #FFFFFF;
+            font-weight: 600;
+            font-size: 0.92rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transition: var(--transition);
+        }
+
+        .benefits-list-custom li:hover {
+            background: rgba(212, 175, 55, 0.15);
+            transform: translateX(5px);
+        }
+
+        .benefits-list-custom li i {
+            color: #2ECC71;
+            font-size: 1.1rem;
+        }
+
+        /* RECURSOS / EQUIPAMENTOS ANIMAÇÕES */
+        .resources-badges {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .resource-item {
+            background: var(--massagem-white);
+            color: #1C1714;
+            padding: 14px 20px;
+            border-radius: 16px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            border: 2px solid transparent;
+            transition: var(--transition);
+        }
+
+        .resource-item:hover {
+            border-color: var(--massagem-dourado-bright);
+            background: #FFFDF9;
+            transform: scale(1.03);
+        }
+
+        .resource-icon {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: var(--massagem-bege-escuro);
+            color: var(--massagem-dourado-bright);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            animation: floatIcon 3s infinite ease-in-out;
+        }
+
+        @keyframes floatIcon {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-4px); }
+        }
+
+        /* CARD DE OFERTA ESPECIAL - O IMPERDÍVEL (DESTAQUE MÁXIMO) */
+        .special-offer-card {
+            background: linear-gradient(145deg, #2D231E 0%, #1A1411 100%);
+            border: 3px solid var(--massagem-dourado-bright);
+            border-radius: var(--radius-lg);
+            padding: 50px 35px;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 0 50px rgba(255, 215, 0, 0.35);
+            margin-bottom: 60px;
+            overflow: hidden;
+            animation: offerPulse 4s infinite ease-in-out;
+        }
+
+        @keyframes offerPulse {
+            0%, 100% { box-shadow: 0 0 35px rgba(255, 215, 0, 0.3); }
+            50% { box-shadow: 0 0 60px rgba(255, 215, 0, 0.6); }
+        }
+
+        .offer-ribbon {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: var(--massagem-gold-gradient);
+            color: #1C1714;
+            font-weight: 900;
+            font-size: 0.85rem;
+            padding: 8px 35px;
+            transform: rotate(45deg) translate(28px, -15px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .offer-header-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: #FFD700;
+            font-weight: 800;
+            font-size: 1.3rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+        }
+
+        .offer-package-title {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--massagem-white);
+            margin-bottom: 15px;
+        }
+
+        .price-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            margin: 25px 0;
+            flex-wrap: wrap;
+        }
+
+        .old-price {
+            font-size: 1.6rem;
+            color: #A08C7D;
+            text-decoration: line-through;
+            font-weight: 600;
+        }
+
+        .new-price {
+            background: var(--massagem-gold-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 3.8rem;
+            font-weight: 900;
+            line-height: 1;
+        }
+
+        .bonus-badge-box {
+            background: linear-gradient(135deg, #102B18 0%, #1E4627 100%);
+            border: 2px solid #2ECC71;
+            padding: 20px;
+            border-radius: 18px;
+            max-width: 650px;
+            margin: 0 auto 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            box-shadow: 0 6px 20px rgba(46, 204, 113, 0.25);
+            animation: bounceSoft 3s infinite ease-in-out;
+        }
+
+        @keyframes bounceSoft {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+
+        .bonus-icon {
+            font-size: 2.2rem;
+            color: #FFD700;
+        }
+
+        .bonus-text {
+            color: #FFFFFF;
+            font-size: 1.15rem;
+            font-weight: 700;
+            text-align: left;
+        }
+
+        .bonus-text span {
+            color: #2ECC71;
+            text-transform: uppercase;
+            font-weight: 900;
+            display: block;
+        }
+
+        .warning-banner {
+            background: rgba(231, 76, 60, 0.2);
+            border: 1px dashed #E74C3C;
+            color: #FF6B6B;
+            padding: 14px 20px;
+            border-radius: 12px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            max-width: 700px;
+            margin: 0 auto 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        /* BOTÃO WHATSAPP MASSOTERAPIA GIGANTE */
+        .btn-massage-cta {
+            background: var(--massagem-gold-gradient);
+            color: #1C1714;
+            padding: 22px 45px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 900;
+            font-size: 1.2rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.4);
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-massage-cta:hover {
+            transform: translateY(-4px) scale(1.03);
+            box-shadow: 0 15px 45px rgba(255, 215, 0, 0.6);
+            background: linear-gradient(135deg, #FCF6BA 0%, #BF953F 50%, #FFD700 100%);
+        }
+
+        .btn-massage-cta i {
+            font-size: 1.8rem;
+            color: #000;
+        }
+
+        .closing-note {
+            margin-top: 30px;
+            color: #D9C5B2;
+            font-style: italic;
+            font-size: 1.05rem;
+        }
+
+        .closing-note strong {
+            color: var(--massagem-dourado-bright);
+            font-style: normal;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #1E293B;
+            color: var(--white);
+            padding: 50px 24px 30px;
+            margin-top: 80px;
+            text-align: center;
+            transition: background 0.5s ease;
+        }
+
+        body.theme-massagem footer {
+            background: #120E0C;
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .footer-logo { font-family: 'Playfair Display', serif; font-size: 1.8rem; margin-bottom: 10px; color: var(--gold-light); transition: var(--transition); }
+        .footer-links { display: flex; justify-content: center; gap: 20px; margin: 20px 0 30px; flex-wrap: wrap; }
+        .footer-links a { color: #94A3B8; text-decoration: none; font-size: 0.9rem; transition: var(--transition); }
+        body.theme-massagem .footer-links a { color: #D3C2B5; }
+        .footer-links a:hover { color: var(--gold-main); }
+        .copyright { font-size: 0.8rem; color: #64748B; border-top: 1px solid #334155; padding-top: 20px; }
+        body.theme-massagem .copyright { color: #7A695D; border-top-color: #2A211B; }
+
+        /* RESPONSIVE DESIGN */
+        @media (max-width: 900px) {
+            .hero { grid-template-columns: 1fr; text-align: center; padding-top: 40px; }
+            .hero-subtitle { margin: 0 auto 30px; }
+            .hero-actions { justify-content: center; }
+            .hero-visual { margin-top: 30px; }
+            .badge-top { right: 0; }
+            .badge-bottom { left: 0; }
+            .nav-container { flex-direction: column; gap: 15px; }
+            .hero-title { font-size: 2.5rem; }
+            .hero-title .highlight-gold { font-size: 3.2rem; }
+            
+            .benefits-resources-grid { grid-template-columns: 1fr; }
+            .massagem-title-hero { font-size: 2.2rem; }
+            .massagem-title-hero span { font-size: 2.1rem; }
+            .new-price { font-size: 2.8rem; }
+            .btn-massage-cta { font-size: 1rem; padding: 18px 28px; width: 100%; justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Ambient Floating Circles -->
+    <div class="bg-decor">
+        <div class="bg-circle circle-1"></div>
+        <div class="bg-circle circle-2"></div>
+    </div>
+
+    <!-- MAIN HEADER -->
+    <header>
+        <div class="nav-container">
+            <a href="#" class="brand-logo" id="brand-logo-link">
+                <div class="logo-badge" id="logo-badge-icon">
+                    <i class="fa-solid fa-cake-candles"></i>
+                </div>
+                <div class="brand-title" id="brand-title-text">
+                    D'Bolos <span>Confeitaria</span>
+                </div>
+            </a>
+
+            <!-- NICHE TAB SWITCHER -->
+            <div class="tab-switcher">
+                <button class="tab-btn active" id="btn-tab-bolos" onclick="switchTab('bolos')">
+                    <i class="fa-solid fa-cake-candles"></i> Confeitaria D'Bolos
+                </button>
+                <button class="tab-btn" id="btn-tab-massagem" onclick="switchTab('massagem')">
+                    <i class="fa-solid fa-spa"></i> Massoterapia
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- TAB 1: CONFEITARIA D'BOLOS -->
+    <div id="niche-bolos">
+        <!-- HERO SECTION -->
+        <section class="hero">
+            <div class="hero-content">
+                <div class="hero-tag">
+                    <i class="fa-solid fa-star"></i> Confeitaria Artesanal em Brasília
+                </div>
+                <h1 class="hero-title">
+                    Simples, Elegante,
+                    <span class="highlight-pink">Inesquecível.</span>
+                    <span class="highlight-gold">D'Bolos</span>
+                </h1>
+                <p class="hero-subtitle">
+                    O bolo que transforma momentos especiais em memórias inesquecíveis. Receitas feitas com amor, carinho e ingredientes de altíssima qualidade.
+                </p>
+                <div class="hero-actions">
+                    <a href="#builder" class="btn-primary">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i> Montar Meu Bolo
+                    </a>
+                    <a href="https://wa.me/5561991390710?text=Ol%C3%A1!%20Gostaria%20de%20fazer%20um%20or%C3%A7amento%20de%20bolo." target="_blank" class="btn-gold">
+                        <i class="fa-brands fa-whatsapp"></i> Falar no WhatsApp
+                    </a>
+                </div>
+            </div>
+
+            <!-- HERO VISUAL CARDS -->
+            <div class="hero-visual">
+                <div class="floating-badge badge-top">
+                    <div class="badge-icon gold"><i class="fa-solid fa-award"></i></div>
+                    <div class="badge-text">
+                        <strong>Ingredientes Premium</strong>
+                        <span>Chocolates & Frutas selecionadas</span>
+                    </div>
+                </div>
+
+                <div class="floating-badge badge-bottom">
+                    <div class="badge-icon"><i class="fa-solid fa-heart"></i></div>
+                    <div class="badge-text">
+                        <strong>23 Sabores Exclusivos</strong>
+                        <span>Recheios irresistíveis</span>
+                    </div>
+                </div>
+
+                <div class="hero-card-main">
+                    <div class="hero-img-wrapper">
+                        <img src="img/bolo1.png">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- GALLERY / INSTAGRAM SHOWCASE -->
+        <section class="gallery-section">
+            <div class="section-header">
+                <span class="section-subtitle">Siga no Instagram @dbolos7</span>
+                <h2 class="section-title">Galeria de Nossas Criações</h2>
+                <p class="section-desc">Um pouco do trabalho e carinho depositado em cada entrega</p>
+            </div>
+
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="img/bolo2.png">
+                    <div class="gallery-overlay">
+                        <i class="fa-brands fa-instagram"></i>
+                        <p>Bolo Festa com Flores & Chantilly</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item">
+                    <img src="img/bolo3.png" alt="Bolo Morango">
+                    <div class="gallery-overlay">
+                        <i class="fa-brands fa-instagram"></i>
+                        <p>Bolo de Morango com Baba de Moça</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item">
+                    <img src="img/bolo4.png" alt="Bolo Chocolate">
+                    <div class="gallery-overlay">
+                        <i class="fa-brands fa-instagram"></i>
+                        <p>Bolo Ninho com Nutella e Ferrero</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item">
+                    <img src="img/bolo5.png" alt="Bolo Aniversario">
+                    <div class="gallery-overlay">
+                        <i class="fa-brands fa-instagram"></i>
+                        <p>Bolo com Topo Personalizado</p>
+                    </div>
+                </div>
+            </div>
+
+        <!-- HIGHLIGHTS / DIFFERENTIALS -->
+        <section class="features">
+            <div class="section-header">
+                <span class="section-subtitle">Por que escolher a</span>
+                <h2 class="section-title">Confeitaria D'Bolos?</h2>
+                <p class="section-desc">Cuidado em cada detalhe para deixar sua festa ainda mais saborosa</p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fa-solid fa-heart"></i></div>
+                    <h3 class="feature-title">Feito com Amor</h3>
+                    <p class="feature-text">Cada bolo é produzido artesanalmente pensando em encantar você e seus convidados.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fa-solid fa-cookie-bite"></i></div>
+                    <h3 class="feature-title">Sabor Que Marca</h3>
+                    <p class="feature-text">Massas super leves, molhadinhas e recheios ultra cremosos com sabor inigualável.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fa-solid fa-crown"></i></div>
+                    <h3 class="feature-title">Qualidade Premium</h3>
+                    <p class="feature-text">Utilizamos apenas marcas renomadas (Ferrero, Nutella, Suflair, Oreo, Ninho).</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fa-solid fa-gift"></i></div>
+                    <h3 class="feature-title">Qualquer Ocasião</h3>
+                    <p class="feature-text">Aniversários, casamentos, mesversários, corporativo e comemorações familiares.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- PRICING & CARDÁPIO DE VALORES -->
+        <section class="pricing-section">
+            <div class="pricing-container">
+                <div class="section-header">
+                    <span class="section-subtitle">Nossos Valores &</span>
+                    <h2 class="section-title">Modelos de Bolo</h2>
+                    <p class="section-desc">Escolha a estrutura ideal para a sua celebração</p>
+                </div>
+
+                <div class="pricing-grid">
+                    <!-- BOLO MESA -->
+                    <div class="price-card featured">
+                        <div class="badge-featured">Mais Pedido <i class="fa-solid fa-fire"></i></div>
+                        <div class="price-header">
+                            <h3>Bolo Mesa</h3>
+                            <p>Bolo principal decorado com chantilly e detalhes brilhantes em glitter.</p>
+                        </div>
+                        <div class="price-tag">
+                            <span class="currency">R$</span> 95<span class="currency">,00</span>
+                            <span class="unit">/ kg (a partir)</span>
+                        </div>
+                        <ul class="price-features">
+                            <li><i class="fa-solid fa-circle-check"></i> Acabamento impecável em Chantilly</li>
+                            <li><i class="fa-solid fa-circle-check"></i> Aplicação elegante de Glitter comestível</li>
+                            <li><i class="fa-solid fa-circle-check"></i> Escolha de 1 Massa + 1 Recheio especial</li>
+                            <li><i class="fa-solid fa-circle-check"></i> Ideal para fotos e mesa principal</li>
+                        </ul>
+                        <a href="#builder" class="btn-primary" style="text-align: center; justify-content: center;">
+                            Encomendar Bolo Mesa
+                        </a>
+                    </div>
+
+                    <!-- BOLO COPA -->
+                    <div class="price-card">
+                        <div class="price-header">
+                            <h3>Bolo Copa</h3>
+                            <p>Bolo com acabamento clean e sofisticado em chantilly branco.</p>
+                        </div>
+                        <div class="price-tag">
+                            <span class="currency">R$</span> 85<span class="currency">,00</span>
+                            <span class="unit">/ kg</span>
+                        </div>
+                        <ul class="price-features">
+                            <li><i class="fa-solid fa-circle-check"></i> Cobertura clássica em Chantilly Branco</li>
+                            <li><i class="fa-solid fa-circle-check"></i> Sabor e recheio idênticos ao Bolo Mesa</li>
+                            <li><i class="fa-solid fa-circle-check"></i> Perfeito para servir como apoio aos convidados</li>
+                            <li><i class="fa-solid fa-circle-check"></i> Ótimo custo-benefício</li>
+                        </ul>
+                        <a href="#builder" class="btn-outline" style="text-align: center; justify-content: center;">
+                            Encomendar Bolo Copa
+                        </a>
+                    </div>
+                </div>
+
+                <!-- NOTA DE TOPOS DE BOLO -->
+                <div style="margin-top: 35px; background: var(--white); padding: 24px; border-radius: var(--radius-md); border: 1px solid var(--gold-main); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 15px;">
+                    <div style="display: flex; align-items: center; gap: 15px;">
+                        <div style="width: 44px; height: 44px; border-radius: 50%; background: #FFF3D6; color: var(--gold-dark); display: flex; align-items: center; justify-content: center; font-size: 1.2rem;">
+                            <i class="fa-solid fa-wand-magic"></i>
+                        </div>
+                        <div>
+                            <h4 style="font-size: 1rem; color: var(--text-dark);">Adicionais & Personalização</h4>
+                            <p style="font-size: 0.85rem; color: var(--text-muted);">Topos de Bolo Temáticos a partir de <strong>R$ 25,00</strong>. Taxa de entrega a combinar.</p>
+                        </div>
+                    </div>
+                    <span style="font-size: 0.8rem; background: var(--pink-soft); color: var(--pink-dark); padding: 6px 14px; border-radius: 50px; font-weight: 700;">
+                        ℹ️ Não trabalhamos com docinhos
+                    </span>
+                </div>
+            </div>
+        </section>
+
+        <!-- BUILDER DE BOLO INTERATIVO -->
+        <section class="builder-section" id="builder">
+            <div class="section-header">
+                <span class="section-subtitle">Monte seu Pedido</span>
+                <h2 class="section-title">Seletor de Massas & Recheios</h2>
+                <p class="section-desc">Selecione suas preferências e envie o pedido diretamente para nosso WhatsApp</p>
+            </div>
+
+            <div class="builder-card">
+                <!-- STEP 1: MASSA -->
+                <div class="step-title">
+                    <div class="step-number">1</div>
+                    Escolha 1 Opção de Massa:
+                </div>
+                <div class="options-massa">
+                    <div class="massa-btn selected" id="massa-branca" onclick="selectMassa('Branca')">
+                        <i class="fa-solid fa-wheat-awn"></i> Massa Branca
+                    </div>
+                    <div class="massa-btn" id="massa-chocolate" onclick="selectMassa('Chocolate')">
+                        <i class="fa-solid fa-cookie"></i> Massa de Chocolate
+                    </div>
+                </div>
+
+                <!-- STEP 2: RECHEIO -->
+                <div class="step-title">
+                    <div class="step-number">2</div>
+                    Escolha 1 Opção de Recheio (23 Sabores):
+                </div>
+
+                <!-- FILTERS -->
+                <div class="recheio-filters">
+                    <button class="filter-chip active" onclick="filterRecheios('Todos', this)">Todos (23)</button>
+                    <button class="filter-chip" onclick="filterRecheios('Chocolates', this)">Chocolates</button>
+                    <button class="filter-chip" onclick="filterRecheios('Frutas', this)">Frutas</button>
+                    <button class="filter-chip" onclick="filterRecheios('Tradicionais', this)">Tradicionais</button>
+                    <button class="filter-chip" onclick="filterRecheios('Especiais', this)">Especiais</button>
+                </div>
+
+                <!-- RECHEIOS GRID -->
+                <div class="recheios-grid" id="recheios-container"></div>
+
+                <!-- STEP 3: SUMMARY & WHATSAPP ACTION -->
+                <div class="order-summary">
+                    <div class="summary-info">
+                        <h4>Sua Escolha Atual:</h4>
+                        <div class="summary-details">
+                            Massa <span id="summary-massa">Branca</span> + Recheio: <span id="summary-recheio">Não selecionado</span>
+                        </div>
+                    </div>
+                    <button class="btn-primary" onclick="sendWhatsappOrder()" style="background: #25D366; color: white;">
+                        <i class="fa-brands fa-whatsapp" style="font-size: 1.2rem;"></i> Enviar Escolha no WhatsApp
+                    </button>
+                </div>
+            </div>
+        </section>
+
+  
+
+            <div class="quote-box">
+                <i class="fa-solid fa-quote-left quote-icon"></i>
+                <p class="quote-text">
+                    "Não subestime um empreendedor que tem Deus como sócio. Porque esse negócio carrega poder e propósito sobrenatural." ✨
+                </p>
+            </div>
+        </section>
+    </div>
+
+    <!-- TAB 2: MASSOTERAPIA & BEM-ESTAR (BRANCO, BEGE ESCURO E DOURADO) -->
+    <div id="niche-massagem">
+        <!-- BANNER DE PROMOÇÃO -->
+        <div class="massagem-promo-banner">
+            <div class="promo-fire-tag">
+                <i class="fa-solid fa-fire-flame-curved"></i> PROMOÇÃO POR TEMPO LIMITADO! <i class="fa-solid fa-fire-flame-curved"></i>
+            </div>
+            
+            <h1 class="massagem-title-hero">
+                ✨ Seu corpo está pedindo socorro?
+                <span>CHEGOU A HORA DE CUIDAR DE VOCÊ! ✨</span>
+            </h1>
+
+            <p class="massagem-subtitle-hero">
+                Não espere a dor aumentar para começar a se cuidar. Um corpo bem cuidado tem mais disposição, qualidade de vida e bem-estar.
+            </p>
+
+            <!-- CARD DE PERGUNTAS & DORES -->
+            <div class="pain-points-card">
+                <div class="pain-question">
+                    <i class="fa-solid fa-circle-question"></i> Você sente dores musculares, inchaço, cansaço, estresse ou aquela sensação de peso no corpo?
+                </div>
+                <div class="pain-text">
+                    Sua saúde física e mental merece prioridade. Experimente a combinação perfeita de técnicas manuais de excelência com tecnologia estética avançada.
+                </div>
+                <div class="session-info">
+                    <i class="fa-solid fa-hand-holding-heart"></i> Cada sessão é 100% personalizada combinando técnicas manuais e equipamentos específicos para o que seu corpo realmente precisa.
+                </div>
+            </div>
+        </div>
+
+        <!-- BENEFÍCIOS E RECURSOS UTILIZADOS -->
+        <div class="benefits-resources-grid">
+            <!-- BOX BENEFÍCIOS -->
+            <div class="benefits-box">
+                <div class="box-header-title">
+                    <i class="fa-solid fa-leaf"></i> Você Pode Conquistar:
+                </div>
+                <ul class="benefits-list-custom">
+                    <li><i class="fa-solid fa-circle-check"></i> Alívio das dores musculares</li>
+                    <li><i class="fa-solid fa-circle-check"></i> Redução do inchaço e retenção de líquidos</li>
+                    <li><i class="fa-solid fa-circle-check"></i> Melhora significativa da circulação</li>
+                    <li><i class="fa-solid fa-circle-check"></i> Relaxamento profundo das tensões</li>
+                    <li><i class="fa-solid fa-circle-check"></i> Sensação de leveza e renovação imediata</li>
+                    <li><i class="fa-solid fa-circle-check"></i> Mais bem-estar físico e emocional</li>
+                </ul>
+            </div>
+
+            <!-- BOX RECURSOS TECNOLÓGICOS -->
+            <div class="resources-box">
+                <div class="box-header-title">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i> Recursos Utilizados:
+                </div>
+                <p style="color: #D9C5B2; font-size: 0.85rem; margin-bottom: 20px;">
+                    Aplicados estrategicamente conforme a sua necessidade específica:
+                </p>
+                <div class="resources-badges">
+                    <div class="resource-item">
+                        <div class="resource-icon"><i class="fa-solid fa-wave-square"></i></div>
+                        Ultrassom Terapêutico
+                    </div>
+                    <div class="resource-item">
+                        <div class="resource-icon"><i class="fa-solid fa-compact-disc"></i></div>
+                        Endermo
+                    </div>
+                    <div class="resource-item">
+                        <div class="resource-icon"><i class="fa-solid fa-bolt"></i></div>
+                        Vibrocell
+                    </div>
+                    <div class="resource-item">
+                        <div class="resource-icon"><i class="fa-solid fa-dharmachakra"></i></div>
+                        Rolo Turbinado
+                    </div>
+                    <div class="resource-item">
+                        <div class="resource-icon"><i class="fa-solid fa-temperature-arrow-up"></i></div>
+                        Manta Térmica
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SUPER CARD DE OFERTA ESPECIAL -->
+        <div class="special-offer-card">
+            <div class="offer-ribbon">VIP</div>
+            
+            <div class="offer-header-tag">
+                <i class="fa-solid fa-gift"></i> 🎉 OFERTA ESPECIAL IMPERDÍVEL 🎉
+            </div>
+
+            <h2 class="offer-package-title">PACOTE TRANSFORMADOR COM 8 SESSÕES</h2>
+
+            <div class="price-container">
+                <span class="old-price">De R$ 650,00</span>
+                <span class="new-price">R$ 570,00</span>
+            </div>
+
+            <!-- BÔNUS DETOX GRATUITO -->
+            <div class="bonus-badge-box">
+                <div class="bonus-icon"><i class="fa-solid fa-box-open"></i></div>
+                <div class="bonus-text">
+                    🎁 PRESENTÃO EXCLUSIVO:
+                    <span>E você ainda ganha, no mínimo, 2 SESSÕES DETOX totalmente GRATUITAS!</span>
+                </div>
+            </div>
+
+        
+
+            <!-- BOTAO DE AGENDAMENTO WHATSAPP -->
+            <a href="https://wa.me/5561991390710?text=Ol%C3%A1%20D%C3%A9bora!%20Quero%20aproveitar%20a%20PROMO%C3%87%C3%83O%20do%20Pacote%20de%208%20Sess%C3%B5es%20por%20R%24%20570%2C00%20e%20garantir%20minhas%202%20Sess%C3%B5es%20Detox%20Gratuitas!" target="_blank" class="btn-massage-cta">
+                <i class="fa-brands fa-whatsapp"></i> Agende agora mesmo o seu horário e garanta a sua vaga!
+            </a>
+
+            <div class="closing-note">
+                Não adie o cuidado com quem faz tudo por todos os dias: <strong>VOCÊ</strong>.<br>
+                💖 <em>Será um prazer cuidar de você e fazer parte da sua transformação!</em>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-logo" id="footer-logo-text">Confeitaria D'Bolos & Espaço Bem-Estar</div>
+        <p style="font-size: 0.85rem; color: #94A3B8;" id="footer-subtext">Confeitaria Artesanal e Massoterapia • Recanto das Emas - DF</p>
+        <div class="footer-links">
+            <a href="https://instagram.com/dbolos7" id="footer-insta" target="_blank"><i class="fa-brands fa-instagram"></i> @dbolos7</a>
+            <a href="https://wa.me/5561991390710" target="_blank"><i class="fa-brands fa-whatsapp"></i> (61) 99139-0710</a>
+        </div>
+        <div class="copyright">
+            © 2026 Todos os direitos reservados.
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // DATA SET OF 23 RECHEIOS
+        const recheiosData = [
+            { id: 1, name: "Choconezes", desc: "Brigadeiro gourmet cremoso com nozes picadas", cat: "Chocolates" },
+            { id: 2, name: "Churros", desc: "Doce de leite artesanal com um toque especial de canela", cat: "Tradicionais" },
+            { id: 3, name: "Doce de Leite com Ameixa", desc: "Doce de leite tradicional com pedaços de ameixa selecionada", cat: "Tradicionais" },
+            { id: 4, name: "Diamante Negro", desc: "Brigadeiro com generosos pedaços de chocolate Diamante Negro", cat: "Chocolates" },
+            { id: 5, name: "Ferrero Rocher", desc: "1 camada de Nutella + 1 camada de baba de moça com wafer e avelãs", cat: "Especiais" },
+            { id: 6, name: "Floresta Negra", desc: "Brigadeiro aveludado com pedaços de cereja", cat: "Chocolates" },
+            { id: 7, name: "Leite Ninho com Nutella", desc: "Creme de Leite Ninho puro acompanhado da verdadeira Nutella", cat: "Especiais" },
+            { id: 8, name: "Leite Ninho com Morango", desc: "Baba de moça com leite Ninho e pedaços de morango fresco", cat: "Frutas" },
+            { id: 9, name: "Madalena", desc: "1 camada de baba de moça c/ morango + 1 camada de brigadeiro c/ morango", cat: "Frutas" },
+            { id: 10, name: "Mousse de Limão", desc: "Mousse refrescante e leve de limão natural", cat: "Frutas" },
+            { id: 11, name: "Prestígio", desc: "1 camada de brigadeiro + 1 camada de beijinho cremoso", cat: "Tradicionais" },
+            { id: 12, name: "Sonho de Valsa", desc: "Baba de moça com brigadeiro e pedaços crocantes de Sonho de Valsa", cat: "Chocolates" },
+            { id: 13, name: "Suflair", desc: "Brigadeiro cremoso com pedaços de chocolate Suflair aerado", cat: "Chocolates" },
+            { id: 14, name: "Tapete de Morango", desc: "Baba de moça especial coberta com pedaços de morango", cat: "Frutas" },
+            { id: 15, name: "À Moda da Casa", desc: "1 camada de Suflair + 1 camada de tapete de morango", cat: "Especiais" },
+            { id: 16, name: "Abacaxi", desc: "Baba de moça suave com polpa de abacaxi caseira", cat: "Frutas" },
+            { id: 17, name: "Abacaxi com Coco", desc: "Baba de moça com polpa de abacaxi e flocos de coco ralado", cat: "Frutas" },
+            { id: 18, name: "Ameixa", desc: "Baba de moça cremosa com polpa de ameixa", cat: "Frutas" },
+            { id: 19, name: "Bis", desc: "Brigadeiro de panela com pedaços crocantes de Bis", cat: "Chocolates" },
+            { id: 20, name: "Brigadeiro com Beijinho", desc: "1 camada de brigadeiro tradicional + 1 camada de beijinho", cat: "Tradicionais" },
+            { id: 21, name: "Oreo", desc: "Brigadeiro branco super cremoso com pedaços de biscoito Oreo", cat: "Chocolates" },
+            { id: 22, name: "Maracujá", desc: "Mousse e creme suave de maracujá natural", cat: "Frutas" },
+            { id: 23, name: "Dois Amores", desc: "1 camada de brigadeiro ao leite + 1 camada de brigadeiro branco", cat: "Tradicionais" }
+        ];
+
+        let selectedMassa = 'Branca';
+        let selectedRecheio = null;
+        const whatsappNumber = '5561991390710';
+
+        // INITIALIZE RECHEIOS GRID
+        function renderRecheios(filter = 'Todos') {
+            const container = document.getElementById('recheios-container');
+            if(!container) return;
+            container.innerHTML = '';
+
+            const filtered = filter === 'Todos' 
+                ? recheiosData 
+                : recheiosData.filter(r => r.cat === filter);
+
+            filtered.forEach(r => {
+                const card = document.createElement('div');
+                card.className = `recheio-card ${selectedRecheio === r.name ? 'selected' : ''}`;
+                card.onclick = () => selectRecheio(r.name);
+
+                card.innerHTML = `
+                    <div class="recheio-header">
+                        <div class="recheio-title">${r.name}</div>
+                        <i class="fa-solid fa-circle-check check-icon"></i>
+                    </div>
+                    <div class="recheio-desc">${r.desc}</div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        // FILTER RECHEIOS
+        function filterRecheios(category, btnElement) {
+            document.querySelectorAll('.filter-chip').forEach(btn => btn.classList.remove('active'));
+            btnElement.classList.add('active');
+            renderRecheios(category);
+        }
+
+        // SELECT MASSA
+        function selectMassa(massa) {
+            selectedMassa = massa;
+            document.getElementById('massa-branca').classList.toggle('selected', massa === 'Branca');
+            document.getElementById('massa-chocolate').classList.toggle('selected', massa === 'Chocolate');
+            document.getElementById('summary-massa').innerText = massa;
+        }
+
+        // SELECT RECHEIO
+        function selectRecheio(name) {
+            selectedRecheio = name;
+            document.getElementById('summary-recheio').innerText = name;
+            
+            document.querySelectorAll('.recheio-card').forEach(card => {
+                const title = card.querySelector('.recheio-title').innerText;
+                if(title === name) {
+                    card.classList.add('selected');
+                } else {
+                    card.classList.remove('selected');
+                }
+            });
+        }
+
+        // SWITCH BETWEEN NICHES WITH SMOOTH COLOR & TITLE TRANSITION
+        function switchTab(tab) {
+            const bolosDiv = document.getElementById('niche-bolos');
+            const massagemDiv = document.getElementById('niche-massagem');
+            const btnBolos = document.getElementById('btn-tab-bolos');
+            const btnMassagem = document.getElementById('btn-tab-massagem');
+            const titleText = document.getElementById('brand-title-text');
+            const logoIcon = document.getElementById('logo-badge-icon');
+            const footerLogo = document.getElementById('footer-logo-text');
+            const footerInsta = document.getElementById('footer-insta');
+
+            if(tab === 'bolos') {
+                // Alterna visualização dos elementos
+                bolosDiv.style.display = 'block';
+                massagemDiv.classList.remove('active-section');
+                massagemDiv.style.display = 'none';
+                
+                // Botões
+                btnBolos.classList.add('active');
+                btnMassagem.classList.remove('active', 'massagem-tab');
+                
+                // Altera Nome e Ícone do Cabeçalho
+                titleText.innerHTML = "D'Bolos <span>Confeitaria</span>";
+                logoIcon.innerHTML = '<i class="fa-solid fa-cake-candles"></i>';
+                logoIcon.style.background = 'var(--gold-gradient)';
+                
+                // Footer
+                footerLogo.innerText = "Confeitaria D'Bolos & Espaço Bem-Estar";
+                footerInsta.href = "https://instagram.com/dbolos7";
+                footerInsta.innerHTML = '<i class="fa-brands fa-instagram"></i> @dbolos7';
+
+                // Tema do Body
+                document.body.classList.remove('theme-massagem');
+            } else {
+                // Alterna visualização dos elementos com transição suave
+                bolosDiv.style.display = 'none';
+                massagemDiv.style.display = 'block';
+                setTimeout(() => {
+                    massagemDiv.classList.add('active-section');
+                }, 20);
+                
+                // Botões
+                btnMassagem.classList.add('active', 'massagem-tab');
+                btnBolos.classList.remove('active');
+                
+                // Altera Nome e Ícone do Cabeçalho para Débora Massoterapeuta
+                titleText.innerHTML = "Débora <span>Massoterapeuta</span>";
+                logoIcon.innerHTML = '<i class="fa-solid fa-spa"></i>';
+                logoIcon.style.background = 'var(--massagem-gold-gradient)';
+                
+                // Footer
+                footerLogo.innerText = "Débora Massoterapeuta - Espaço Bem-Estar";
+                footerInsta.href = "https://instagram.com/debo.ramassagem";
+                footerInsta.innerHTML = '<i class="fa-brands fa-instagram"></i> @debo.ramassagem';
+
+                // Tema do Body (Branco, Bege Escuro e Dourado)
+                document.body.classList.add('theme-massagem');
+            }
+        }
+
+        // SEND WHATSAPP ORDER FOR BOLOS
+        function sendWhatsappOrder() {
+            if(!selectedRecheio) {
+                alert("Por favor, selecione 1 opção de recheio antes de continuar!");
+                return;
+            }
+
+            const message = `Olá Confeitaria D'Bolos! 🎂
+
+Gostaria de fazer um orçamento com as seguintes opções:
+- *Massa*: ${selectedMassa}
+- *Recheio*: ${selectedRecheio}
+
+Pode me passar os valores e disponibilidade de data?`;
+            const encodedMsg = encodeURIComponent(message);
+            window.open(`https://wa.me/${whatsappNumber}?text=${encodedMsg}`, '_blank');
+        }
+
+        // INITIAL LOAD
+        window.onload = function() {
+            renderRecheios('Todos');
+        };
+    </script>
+</body>
+</html>
